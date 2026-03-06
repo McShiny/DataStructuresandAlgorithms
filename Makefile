@@ -1,4 +1,4 @@
 all:
-	javac *.java
+	javac *.java dataStructures/*.java
 clean:
-	rm -f *.class
+	rm -f *.class dataStructures/*.class

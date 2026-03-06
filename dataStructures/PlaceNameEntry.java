@@ -27,6 +27,19 @@ public class PlaceNameEntry {
         population = Integer.parseInt(placeLine[4]);
 
     }
+    
+    @Override
+    public boolean equals(Object object) {
+        
+        if (object == null || getClass() != object.getClass()) {
+            return false;
+        }
+
+        PlaceNameEntry other = (PlaceNameEntry) object;
+
+        return this.id == other.id;
+
+    }
 
     public String toString() {
         return id + " " + placeName + " " + municipality + " " + province + " " + population;

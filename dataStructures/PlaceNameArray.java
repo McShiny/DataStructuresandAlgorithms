@@ -8,7 +8,7 @@ public class PlaceNameArray {
     
     private PlaceNameEntry[] placeArray;
     private String[] fileInputOrder;
-    private int searchComparisons;
+    private int searchComparisons = 0;
     private int loadedPlaces = 0;
 
     public PlaceNameArray(int maxRecords) {
@@ -38,8 +38,15 @@ public class PlaceNameArray {
         }
     }
 
-    public void findPlace() {
-        // 
+    public String findPlace(String place) {
+        // finds requested SAPlace in placeArray
+        for (int i = 0; i < loadedPlaces - 1; i++) {
+            if (placeArray[i].placeName.compareTo(place) == 0)
+                return placeArray[i].toString();
+        }   
+
+        return "Place not found in database";
+
     }
 
     public String toString() {

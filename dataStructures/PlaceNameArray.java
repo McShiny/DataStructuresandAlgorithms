@@ -3,6 +3,8 @@ package dataStructures;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class PlaceNameArray {
     
@@ -13,6 +15,16 @@ public class PlaceNameArray {
 
     public PlaceNameArray(int maxRecords) {
         placeArray = new PlaceNameEntry[maxRecords];
+    }
+
+    public PlaceNameArray (PlaceNameArray places) {
+        this.loadedPlaces = places.getLoadedPlaces();
+        this.placeArray = new PlaceNameEntry[loadedPlaces];
+
+        for (int i = 0; i < loadedPlaces; i++) {
+            this.placeArray[i] = new PlaceNameEntry(places.getPlaceArray()[i]);
+        }
+
     }
 
     public void loadRecords(int maxRecords, String filePath) {
@@ -36,6 +48,7 @@ public class PlaceNameArray {
 
     public String findPlace(String place) {
         for (int i = 0; i < loadedPlaces - 1; i++) {
+            searchComparisons++;
             if (placeArray[i].placeName.compareTo(place) == 0)
                 return placeArray[i].toString();
         }   
@@ -44,6 +57,22 @@ public class PlaceNameArray {
 
     }
 
+    public int getLoadedPlaces() {
+        return loadedPlaces;
+    }
+
+    public PlaceNameEntry[] getPlaceArray() {
+        return placeArray;
+    }
+
+    public PlaceNameEntry[] sortByName(PlaceNameArray places) {
+        PlaceNameArray sortedPlaces = new PlaceNameArray(places);
+        Arrays.sort(sortedPlaces.getPlaceArray(), Comparator.comparing(p -> p.placeName));
+
+        return sortedPlaces.getPlaceArray();
+    }
+    
+    @Override
     public String toString() {
         String output = "";
 
@@ -53,4 +82,6 @@ public class PlaceNameArray {
 
         return output;
     }
+
+    
 }

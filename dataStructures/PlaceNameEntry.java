@@ -20,12 +20,20 @@ public class PlaceNameEntry {
     
     public PlaceNameEntry(String[] placeLine) {
         
-        id = Integer.parseInt(placeLine[0]);
-        placeName = placeLine[1];
-        municipality = placeLine[2];
-        province = placeLine[3];
-        population = Integer.parseInt(placeLine[4]);
+        this.id = Integer.parseInt(placeLine[0]);
+        this.placeName = placeLine[1];
+        this.municipality = placeLine[2];
+        this.province = placeLine[3];
+        this.population = Integer.parseInt(placeLine[4]);
 
+    }
+
+    public PlaceNameEntry(PlaceNameEntry place) {
+        this.id = place.id;
+        this.placeName = place.placeName;
+        this.municipality = place.municipality;
+        this.province = place.province;
+        this.population = place.population;
     }
     
     @Override
@@ -40,7 +48,8 @@ public class PlaceNameEntry {
         return this.id == other.id;
 
     }
-
+    
+    @Override
     public String toString() {
         return id + " " + placeName + " " + municipality + " " + province + " " + population;
     }

@@ -10,6 +10,7 @@ public class PlaceNameBST {
     private Node root;
     private String[] fileInputOrder;
     int size = 0;
+    int searchComparisons = 0;
 
     private class Node {
         
@@ -27,6 +28,14 @@ public class PlaceNameBST {
 
     public PlaceNameBST () {
         this.root = null;
+    }
+
+    public PlaceNameBST (PlaceNameArray places) {
+        this.root = null;
+
+        for (int i = 0; i < places.getLoadedPlaces(); i++) {
+            insertNode(places.getPlaceArray()[i]);
+        }
     }
 
     public void loadRecords(int maxRecords, String filePath) {
@@ -84,12 +93,14 @@ public class PlaceNameBST {
         if (root == null) {
             return "Place not found in database";
         }
-
+        
+        searchComparisons++;
         return findPlace(placeName, root);
     }
 
     private String findPlace(String placeName, Node node) {
         int comparison = node.data.placeName.compareTo(placeName);
+        searchComparisons++;
         if (comparison == 0)
             return node.data.toString();
         else if (comparison < 0) {

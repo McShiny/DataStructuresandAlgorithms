@@ -4,7 +4,7 @@ import dataStructures.PlaceNameArray;
 public class PlaceSearchArray {
     public static void main(String[] args) {
         
-        PlaceNameArray data = new PlaceNameArray(12);
+        PlaceNameArray data = new PlaceNameArray(1200); // change so the array size is malleable
 
         Scanner in = new Scanner(System.in);
         
@@ -20,8 +20,6 @@ public class PlaceSearchArray {
                 
                 System.out.print("Please enter how many places to load: ");
                 int numPlaces = in.nextInt();
-
-                data = new PlaceNameArray(64);
 
                 data.loadRecords(numPlaces, filePath);
 

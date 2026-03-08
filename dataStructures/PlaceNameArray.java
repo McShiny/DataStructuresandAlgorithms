@@ -10,7 +10,7 @@ public class PlaceNameArray {
     
     private PlaceNameEntry[] placeArray;
     private String[] fileInputOrder;
-    private int searchComparisons = 0;
+    private int searchComparisons;
     private int loadedPlaces = 0;
 
     public PlaceNameArray(int maxRecords) {
@@ -30,10 +30,11 @@ public class PlaceNameArray {
     public void loadRecords(int maxRecords, String filePath) {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line = reader.readLine();
-            fileInputOrder = fileInputOrder = line.split(",");
+            if (loadedPlaces == 0) {
+                fileInputOrder = line.split(",");
+            }
             int loaded = 0;
-
-            while ((line = reader.readLine()) != null && loaded < maxRecords + 1) {
+            while ((line = reader.readLine()) != null && loaded < maxRecords) {
                     placeArray[loadedPlaces + loaded] = new PlaceNameEntry(line.split(","));
                     loaded++;
                 }
@@ -47,6 +48,7 @@ public class PlaceNameArray {
     }
 
     public String findPlace(String place) {
+        searchComparisons = 0;
         for (int i = 0; i < loadedPlaces - 1; i++) {
             searchComparisons++;
             if (placeArray[i].placeName.compareTo(place) == 0)
@@ -65,6 +67,10 @@ public class PlaceNameArray {
         return placeArray;
     }
 
+    public int getSearchComparisons() {
+        return searchComparisons;
+    }
+
     public PlaceNameEntry[] sortByName(PlaceNameArray places) {
         PlaceNameArray sortedPlaces = new PlaceNameArray(places);
         Arrays.sort(sortedPlaces.getPlaceArray(), Comparator.comparing(p -> p.placeName));
@@ -76,7 +82,7 @@ public class PlaceNameArray {
     public String toString() {
         String output = "";
 
-        for (int i = 0; i < loadedPlaces - 1; i++) {
+        for (int i = 0; i < loadedPlaces; i++) {
             output += placeArray[i].toString() + "\n";
         }
 

@@ -10,7 +10,7 @@ public class PlaceNameBST {
     private Node root;
     private String[] fileInputOrder;
     int size = 0;
-    int searchComparisons = 0;
+    int searchComparisons;
 
     private class Node {
         
@@ -90,6 +90,7 @@ public class PlaceNameBST {
     }
 
     public String findPlace(String placeName) {
+        searchComparisons = 0;
         if (root == null) {
             return "Place not found in database";
         }
@@ -114,6 +115,10 @@ public class PlaceNameBST {
                 else
                     return "Place not found in databse";
         }
+    }
+
+    public int getSearchComparisons() {
+        return searchComparisons;
     }
     
     @Override

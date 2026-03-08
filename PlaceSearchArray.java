@@ -10,7 +10,8 @@ public class PlaceSearchArray {
         
         System.out.println("What would you like to do? (L)oad (S)earch (H)elp (Q)uit");
         String userAction = in.next();
-        
+        in.nextLine();
+
         while (userAction.compareTo("Q") != 0) {
 
             if (userAction.compareTo("L") == 0) {
@@ -30,7 +31,7 @@ public class PlaceSearchArray {
 
             if (userAction.compareTo("S") == 0) {
                 System.out.print("Please enter the name of the place to find: ");
-                String placeName = in.next();
+                String placeName = in.nextLine();
 
                 System.out.println("---Searching for: " + placeName + "---");
                 System.out.println(data.findPlace(placeName));
@@ -42,7 +43,7 @@ public class PlaceSearchArray {
             
             System.out.println("What would you like to do? (L)oad (S)earch (H)elp (Q)uit");
             userAction = in.next();
-        
+            in.nextLine();
         }
 
     }

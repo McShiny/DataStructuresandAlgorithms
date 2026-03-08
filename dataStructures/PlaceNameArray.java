@@ -16,22 +16,18 @@ public class PlaceNameArray {
     }
 
     public void loadRecords(int maxRecords, String filePath) {
-        // load records to a maximum of N
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            int index = loadedPlaces;
+            String line = reader.readLine();
+            fileInputOrder = fileInputOrder = line.split(",");
+            int loaded = 0;
 
-            while ((line = reader.readLine()) != null && index < maxRecords) {
-                if (index == 0) {
-                    fileInputOrder = line.split(",");
-                    index++;
-                } else {
-                    placeArray[index - 1] = new PlaceNameEntry(line.split(","));
-                    index++;
+            while ((line = reader.readLine()) != null && loaded < maxRecords + 1) {
+                    placeArray[loadedPlaces + loaded] = new PlaceNameEntry(line.split(","));
+                    loaded++;
                 }
-            }
 
-            loadedPlaces = index;
+            loadedPlaces += loaded;
+
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
             e.printStackTrace();
@@ -39,7 +35,6 @@ public class PlaceNameArray {
     }
 
     public String findPlace(String place) {
-        // finds requested SAPlace in placeArray
         for (int i = 0; i < loadedPlaces - 1; i++) {
             if (placeArray[i].placeName.compareTo(place) == 0)
                 return placeArray[i].toString();

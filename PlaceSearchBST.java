@@ -10,6 +10,7 @@ public class PlaceSearchBST {
         
         System.out.println("What would you like to do? (L)oad (S)earch (H)elp (Q)uit");
         String userAction = in.next();
+        in.nextLine();
         
         while (userAction.compareTo("Q") != 0) {
 
@@ -28,10 +29,10 @@ public class PlaceSearchBST {
 
             if (userAction.compareTo("S") == 0) {
                 System.out.print("Please enter the name of the place to find: ");
-                String placeName = in.next();
+                String placeName = in.nextLine();
 
                 System.out.println("---Searching for: " + placeName + "---");
-                System.out.println("not yet implemented");
+                System.out.println(data.findPlace(placeName));
             }
 
             if (userAction.compareTo("H") == 0) {
@@ -40,7 +41,7 @@ public class PlaceSearchBST {
             
             System.out.println("What would you like to do? (L)oad (S)earch (H)elp (Q)uit");
             userAction = in.next();
-        
+            in.nextLine();
         }
 
     }

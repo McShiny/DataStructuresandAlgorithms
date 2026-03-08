@@ -30,7 +30,6 @@ public class PlaceNameBST {
     }
 
     public void loadRecords(int maxRecords, String filePath) {
-        // load records to a maximum of N
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line = reader.readLine();
             fileInputOrder = line.split(",");
@@ -45,7 +44,6 @@ public class PlaceNameBST {
     }
     
     private void insertNode(PlaceNameEntry place) {
-        
         if (root == null) {
             root = new Node(place);
             size++;
@@ -55,14 +53,14 @@ public class PlaceNameBST {
     }
 
     private void insertNode(PlaceNameEntry place, Node node) {
-        if (place.placeName.compareTo(node.data.placeName) < 0) {
+        if (node.data.placeName.compareTo(place.placeName) < 0) {
             if (node.left == null) {
                 node.left = new Node(place);
                 size++;
             }
             else
                 insertNode(place, node.left);
-        } else if (place.placeName.compareTo(node.data.placeName) > 0) {
+        } else if (node.data.placeName.compareTo(place.placeName) > 0) {
             if (node.right == null) {
                 node.right = new Node(place);
                 size++;
@@ -80,6 +78,31 @@ public class PlaceNameBST {
         }
 
         return visited;
+    }
+
+    public String findPlace(String placeName) {
+        if (root == null) {
+            return "Place not found in database";
+        }
+
+        return findPlace(placeName, root);
+    }
+
+    private String findPlace(String placeName, Node node) {
+        int comparison = node.data.placeName.compareTo(placeName);
+        if (comparison == 0)
+            return node.data.toString();
+        else if (comparison < 0) {
+                if (node.left != null)
+                    return findPlace(placeName, node.left);
+                else
+                    return "Place not found in database";
+        } else {
+                if (node.right != null)
+                    return findPlace(placeName, node.right);
+                else
+                    return "Place not found in databse";
+        }
     }
     
     @Override

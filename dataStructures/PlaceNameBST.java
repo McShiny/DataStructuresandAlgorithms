@@ -9,8 +9,8 @@ public class PlaceNameBST {
     
     private Node root;
     private String[] fileInputOrder;
-    int size = 0;
-    int searchComparisons;
+    private int size = 0;
+    private int searchComparisons;
 
     private class Node {
         
@@ -43,9 +43,11 @@ public class PlaceNameBST {
             String line = reader.readLine();
             fileInputOrder = line.split(",");
             while ((line = reader.readLine()) != null && size < maxRecords) {
-                insertNode(new PlaceNameEntry(line.split(",")));
+                PlaceNameEntry place = new PlaceNameEntry(line.split(","));
+                if (findPlace(place.placeName, "PlaceNameEntry") == null) {
+                    insertNode(place);
+                }
             }
-
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
             e.printStackTrace();
@@ -117,8 +119,42 @@ public class PlaceNameBST {
         }
     }
 
+    public PlaceNameEntry findPlace(String placeName, String p) {
+        searchComparisons = 0;
+        if (root == null) {
+            return null;
+        }
+        
+        searchComparisons++;
+        return findPlace(placeName, root, p);
+    }
+
+    private PlaceNameEntry findPlace(String placeName, Node node, String p) {
+        int comparison = node.data.placeName.compareTo(placeName);
+        searchComparisons++;
+        if (comparison == 0)
+            return node.data;
+        else if (comparison < 0) {
+                if (node.left != null)
+                    return findPlace(placeName, node.left, p);
+                else
+                    return null;
+        } else {
+                if (node.right != null)
+                    return findPlace(placeName, node.right, p);
+                else
+                    return null;
+        }
+    }
+
+
+
     public int getSearchComparisons() {
         return searchComparisons;
+    }
+
+    public int getSize() {
+        return size;
     }
     
     @Override

@@ -35,16 +35,33 @@ public class PlaceNameArray {
             }
             int loaded = 0;
             while ((line = reader.readLine()) != null && loaded < maxRecords) {
-                    placeArray[loadedPlaces + loaded] = new PlaceNameEntry(line.split(","));
+                PlaceNameEntry place = new PlaceNameEntry(line.split(","));    
+                if (!isInArray(place)) {
+                    placeArray[loadedPlaces + loaded] = place;
                     loaded++;
                 }
-
+            }
             loadedPlaces += loaded;
 
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
             e.printStackTrace();
         }
+    } 
+
+    private boolean isInArray(PlaceNameEntry place) {
+        for (int i = 0; i < placeArray.length; i++) {
+            if (placeArray[i] == place) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public void loadRecord(PlaceNameEntry place) {
+        placeArray[loadedPlaces] = place;
+        loadedPlaces++;
     }
 
     public String findPlace(String place) {
@@ -56,6 +73,18 @@ public class PlaceNameArray {
         }   
 
         return "Place not found in database";
+
+    }
+
+    public PlaceNameEntry findPlace(String place, String r) {
+        searchComparisons = 0;
+        for (int i = 0; i < loadedPlaces - 1; i++) {
+            searchComparisons++;
+            if (placeArray[i].placeName.compareTo(place) == 0)
+                return placeArray[i];
+        }   
+
+        return null;
 
     }
 
@@ -71,13 +100,13 @@ public class PlaceNameArray {
         return searchComparisons;
     }
 
-    public PlaceNameEntry[] sortByName(PlaceNameArray places) {
+    public PlaceNameArray sortByName(PlaceNameArray places) {
         PlaceNameArray sortedPlaces = new PlaceNameArray(places);
         Arrays.sort(sortedPlaces.getPlaceArray(), Comparator.comparing(p -> p.placeName));
 
-        return sortedPlaces.getPlaceArray();
+        return sortedPlaces;
     }
-    
+
     @Override
     public String toString() {
         String output = "";

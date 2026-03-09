@@ -45,7 +45,7 @@ public class PlaceNameEntry {
 
         PlaceNameEntry other = (PlaceNameEntry) object;
 
-        return this.id == other.id;
+        return this.placeName.compareTo(other.placeName) == 0;
 
     }
     

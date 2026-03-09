@@ -36,8 +36,13 @@ public class PlaceNameArray {
             int loaded = 0;
             while ((line = reader.readLine()) != null && loaded < maxRecords) {
                 PlaceNameEntry place = new PlaceNameEntry(line.split(","));    
+                if (isInArray(place)) {
+                    System.out.println(!isInArray(place));
+                }
                 if (!isInArray(place)) {
                     placeArray[loadedPlaces + loaded] = place;
+                    if (loadedPlaces + loaded > 0)
+                        placeArray[loadedPlaces + loaded - 1] = place;
                     loaded++;
                 }
             }
@@ -60,8 +65,10 @@ public class PlaceNameArray {
     }
 
     public void loadRecord(PlaceNameEntry place) {
-        placeArray[loadedPlaces] = place;
-        loadedPlaces++;
+        if (!isInArray(place)) {
+            placeArray[loadedPlaces] = place;
+            loadedPlaces++;
+        }
     }
 
     public String findPlace(String place) {

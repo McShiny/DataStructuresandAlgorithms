@@ -25,6 +25,7 @@ public class PlaceSearchBST {
 
                 System.out.println("\n---SA Places---");
                 System.out.println(data);
+                System.out.println(data.getSize());
             }
 
             if (userAction.compareTo("S") == 0) {

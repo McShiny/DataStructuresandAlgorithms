@@ -30,11 +30,12 @@ public class PlaceNameBST {
         this.root = null;
     }
 
-    public PlaceNameBST (PlaceNameArray places) {
+    public PlaceNameBST (int toLoad, PlaceNameArray places) {
         this.root = null;
-
-        for (int i = 0; i < places.getLoadedPlaces(); i++) {
-            insertNode(places.getPlaceArray()[i]);
+        int index = 0;
+        while (size < toLoad && index < places.getLoadedPlaces()) {
+            insertNode(places.getPlaceArray()[index]);
+            index++;
         }
     }
 
@@ -42,11 +43,9 @@ public class PlaceNameBST {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line = reader.readLine();
             fileInputOrder = line.split(",");
-            while ((line = reader.readLine()) != null && size < maxRecords) {
-                PlaceNameEntry place = new PlaceNameEntry(line.split(","));
-                if (findPlace(place.placeName, "PlaceNameEntry") == null) {
-                    insertNode(place);
-                }
+            int initSize = size;
+            while ((line = reader.readLine()) != null && (size - initSize) < maxRecords) {
+                insertNode(new PlaceNameEntry(line.split(",")));
             }
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());

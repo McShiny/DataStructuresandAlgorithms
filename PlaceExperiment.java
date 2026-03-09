@@ -70,7 +70,7 @@ public class PlaceExperiment {
         int total = 0;
         PlaceNameArray arr = new PlaceNameArray(N);
         arr.loadRecords(N, data);
-        
+
         for (int i = 0; i < 50; i++) {
             arr.findPlace(search[i]);
             total += arr.getSearchComparisons();
@@ -82,61 +82,60 @@ public class PlaceExperiment {
     static double testBST(int N, String[] search, String data) {
         int total = 0;
         
-        PlaceNameArray places = new PlaceNameArray(N);
-        places.loadRecords(N, data);
-
-        PlaceNameBST tree = new PlaceNameBST(places);
-        System.out.println(tree.getSize());
+        PlaceNameArray places = new PlaceNameArray(N + 2000);
+        places.loadRecords(N + 2000, data);
+        
+        PlaceNameBST tree = new PlaceNameBST(N ,places);
 
         for (int i = 0; i < 50; i++) {
             tree.findPlace(search[i]);
             total += tree.getSearchComparisons();
         }
-        return total;
+        return total / 50.0;
     }
 
     static double testSortedBST(int N, String[] search, String data) {
         int total = 0;
         
-        PlaceNameArray places = new PlaceNameArray(N);
-        places.loadRecords(N, data);
+        PlaceNameArray places = new PlaceNameArray(N + 2000);
+        places.loadRecords((int) N + 2000, data);
         PlaceNameArray sortedPlaces = places.sortByName(places);
-
-        PlaceNameBST tree = new PlaceNameBST(sortedPlaces);
-        System.out.println(tree.getSize());
+        
+        PlaceNameBST tree = new PlaceNameBST(N, sortedPlaces);
 
         for (int i = 0; i < 50; i++) {
             tree.findPlace(search[i]);
             total += tree.getSearchComparisons();
         }
-        return total;
+        return total / 50.0;
     }
 
     static double testOptimalBST(int N, String[] search, String data, String[] order) {
         int total = 0;
         
-        PlaceNameArray places = new PlaceNameArray(N);
-        places.loadRecords(N, data);
+        PlaceNameArray places = new PlaceNameArray(N + 2000);
+        places.loadRecords((int) N + 2000, data);
 
-        PlaceNameArray optimalPlaces = new PlaceNameArray(N);
+        PlaceNameArray optimalPlaces = new PlaceNameArray(N + 2000);
         int index = 0;
 
-        while (optimalPlaces.getLoadedPlaces() < N && index < 12499) {
+        while (optimalPlaces.getLoadedPlaces() < N + 2000 && index < 12499) {
             PlaceNameEntry place = places.findPlace(order[index], "PlaceNameEntry");
             if (place != null) {
                 optimalPlaces.loadRecord(place);
             }
             index++;
         }
-
-        PlaceNameBST tree = new PlaceNameBST(optimalPlaces);
+        
+//        System.out.println(optimalPlaces.getLoadedPlaces());
+        PlaceNameBST tree = new PlaceNameBST(N, optimalPlaces);
         System.out.println(tree.getSize());
 
         for (int i = 0; i < 50; i++) {
             tree.findPlace(search[i]);
             total += tree.getSearchComparisons();
         }
-        return total;
+        return total / 50.0;
     }
 
 }

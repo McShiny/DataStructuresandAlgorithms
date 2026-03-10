@@ -4,7 +4,7 @@ import dataStructures.PlaceNameArray;
 public class PlaceSearchArray {
     public static void main(String[] args) {
         
-        PlaceNameArray data = new PlaceNameArray(1200); // change so the array size is malleable
+        PlaceNameArray data = new PlaceNameArray(1);
 
         Scanner in = new Scanner(System.in);
         

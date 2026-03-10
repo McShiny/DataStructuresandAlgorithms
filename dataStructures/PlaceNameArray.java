@@ -17,6 +17,35 @@ public class PlaceNameArray {
         placeArray = new PlaceNameEntry[maxRecords];
     }
 
+    public PlaceNameArray(int maxRecords, String filePath) {
+        placeArray = new PlaceNameEntry[maxRecords];
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line = reader.readLine();
+            if (loadedPlaces == 0) {
+                fileInputOrder = line.split(",");
+            }
+            int loaded = 0;
+            while ((line = reader.readLine()) != null && loaded < maxRecords) {
+                PlaceNameEntry place = new PlaceNameEntry(line.split(","));    
+                if (isInArray(place)) {
+                    System.out.println(!isInArray(place));
+                }
+                if (!isInArray(place)) {
+                    placeArray[loadedPlaces + loaded] = place;
+                    if (loadedPlaces + loaded > 0)
+                        placeArray[loadedPlaces + loaded - 1] = place;
+                    loaded++;
+                }
+            }
+            loadedPlaces += loaded;
+
+        } catch (IOException e) {
+            System.err.println("Error reading file: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
     public PlaceNameArray (PlaceNameArray places) {
         this.loadedPlaces = places.getLoadedPlaces();
         this.placeArray = new PlaceNameEntry[loadedPlaces];
@@ -27,7 +56,23 @@ public class PlaceNameArray {
 
     }
 
+    public PlaceNameArray (PlaceNameArray places, int extra) {
+        this.loadedPlaces = places.getLoadedPlaces();
+        this.placeArray = new PlaceNameEntry[places.getPlaceArray().length + extra];
+
+        for (int i = 0; i < loadedPlaces; i++) {
+            this.placeArray[i] = new PlaceNameEntry(places.getPlaceArray()[i]);
+        }
+
+    }
+
     public void loadRecords(int maxRecords, String filePath) {
+
+        if (maxRecords + loadedPlaces > placeArray.length) {
+            PlaceNameArray temp = new PlaceNameArray(this, (maxRecords + loadedPlaces) - placeArray.length);
+            placeArray = temp.getPlaceArray();
+        }
+
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line = reader.readLine();
             if (loadedPlaces == 0) {

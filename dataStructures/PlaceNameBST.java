@@ -5,6 +5,11 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * Stores and manages PlaceNameEntry objects in a binary search tree.
+ * This class supports loading records, inserting records, searching for places,
+ * and generating an in-order string representation of the tree contents.
+ */
 public class PlaceNameBST {
     
     private Node root;
@@ -26,10 +31,20 @@ public class PlaceNameBST {
 
     }
 
+    /**
+     * Constructs an empty PlaceNameBST.
+     */
     public PlaceNameBST () {
         this.root = null;
     }
 
+    /**
+     * Constructs a PlaceNameBST and inserts records from the given PlaceNameArray
+     * until the requested number of records has been loaded.
+     *
+     * @param toLoad the number of records to insert into the tree
+     * @param places the PlaceNameArray containing the source records
+     */
     public PlaceNameBST (int toLoad, PlaceNameArray places) {
         this.root = null;
         int index = 0;
@@ -39,6 +54,12 @@ public class PlaceNameBST {
         }
     }
 
+    /**
+     * Loads records from a file into the binary search tree.
+     *
+     * @param maxRecords the maximum number of records to load
+     * @param filePath the path to the input file
+     */
     public void loadRecords(int maxRecords, String filePath) {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line = reader.readLine();
@@ -77,7 +98,8 @@ public class PlaceNameBST {
             }
             else
                 insertNode(place, node.right);
-        }
+            }  
+        
     }
 
     private ArrayList<PlaceNameEntry> inOrderTraversal(Node node, ArrayList<PlaceNameEntry> visited) {
@@ -90,6 +112,13 @@ public class PlaceNameBST {
         return visited;
     }
 
+    /**
+     * Searches for a place by name and returns its string representation.
+     *
+     * @param placeName the name of the place to search for
+     * @return the string representation of the matching place, or
+     *         "Place not found in database" if no match is found
+     */
     public String findPlace(String placeName) {
         searchComparisons = 0;
         if (root == null) {
@@ -118,6 +147,13 @@ public class PlaceNameBST {
         }
     }
 
+    /**
+     * Searches for a place by name and returns the matching PlaceNameEntry object.
+     *
+     * @param placeName the name of the place to search for
+     * @param p an unused parameter used to distinguish this overloaded method
+     * @return the matching PlaceNameEntry if found, otherwise null
+     */
     public PlaceNameEntry findPlace(String placeName, String p) {
         searchComparisons = 0;
         if (root == null) {
@@ -145,17 +181,30 @@ public class PlaceNameBST {
                     return null;
         }
     }
-
-
-
+    
+    /**
+     * Returns the number of comparisons made during the most recent tree search.
+     *
+     * @return the number of search comparisons
+     */
     public int getSearchComparisons() {
         return searchComparisons;
     }
-
+    
+    /**
+     * Returns the number of nodes currently stored in the tree.
+     *
+     * @return the number of place records in the tree
+     */
     public int getSize() {
         return size;
     }
     
+    /**
+     * Returns a string representation of the tree contents using in-order traversal.
+     *
+     * @return a multi-line string containing all place records in traversal order
+     */
     @Override
     public String toString() {
         String output = "";

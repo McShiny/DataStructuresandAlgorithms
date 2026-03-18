@@ -126,7 +126,6 @@ public class PlaceExperiment {
             }
             index++;
         }
-        System.out.println(optimalPlaces.getLoadedPlaces());
         PlaceNameBST tree = new PlaceNameBST(N, optimalPlaces);
 
         for (int i = 0; i < 50; i++) {

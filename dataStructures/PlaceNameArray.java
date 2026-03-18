@@ -47,8 +47,6 @@ public class PlaceNameArray {
                 PlaceNameEntry place = new PlaceNameEntry(line.split(","));    
                 if (!isInArray(place)) {
                     placeArray[loadedPlaces + loaded] = place;
-                    if (loadedPlaces + loaded > 0)
-                        placeArray[loadedPlaces + loaded - 1] = place;
                     loaded++;
                 }
             }

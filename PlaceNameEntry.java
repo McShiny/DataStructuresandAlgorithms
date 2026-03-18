@@ -1,4 +1,3 @@
-package dataStructures;
 
 /**
  * Represents a single place record containing identifying data.

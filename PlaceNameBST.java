@@ -1,5 +1,3 @@
-package dataStructures;
-
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -28,7 +26,6 @@ public class PlaceNameBST {
             this.left = null;
             this.right = null;
         }
-
     }
 
     /**
@@ -99,7 +96,6 @@ public class PlaceNameBST {
             else
                 insertNode(place, node.right);
             }  
-        
     }
 
     private ArrayList<PlaceNameEntry> inOrderTraversal(Node node, ArrayList<PlaceNameEntry> visited) {
@@ -142,7 +138,7 @@ public class PlaceNameBST {
                 if (node.right != null)
                     return findPlace(placeName, node.right);
                 else
-                    return "Place not found in databse";
+                    return "Place not found in database";
         }
     }
 
@@ -156,10 +152,9 @@ public class PlaceNameBST {
     public PlaceNameEntry findPlace(String placeName, String p) {
         searchComparisons = 0;
         if (root == null) {
+            searchComparisons++;
             return null;
         }
-        
-        searchComparisons++;
         return findPlace(placeName, root, p);
     }
 

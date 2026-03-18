@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import dataStructures.PlaceNameArray;
 
 public class PlaceSearchArray {
     public static void main(String[] args) {
@@ -32,6 +31,7 @@ public class PlaceSearchArray {
 
                 System.out.println("---Searching for: " + placeName + "---");
                 System.out.println(data.findPlace(placeName));
+                System.out.println("Number of Comparisons: " + data.getSearchComparisons());
             }
 
             if (userAction.compareTo("H") == 0 || userAction.compareTo("h") == 0 || userAction.compareTo("help") == 0 || userAction.compareTo("Help") == 0) {

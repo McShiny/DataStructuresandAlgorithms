@@ -157,7 +157,7 @@ public class PlaceNameArray {
      */
     public String findPlace(String place) {
         searchComparisons = 0;
-        for (int i = 0; i < loadedPlaces - 1; i++) {
+        for (int i = 0; i < loadedPlaces; i++) {
             searchComparisons++;
             if (placeArray[i].placeName.compareTo(place) == 0)
                 return placeArray[i].toString();
@@ -176,7 +176,7 @@ public class PlaceNameArray {
      */
     public PlaceNameEntry findPlace(String place, String r) {
         searchComparisons = 0;
-        for (int i = 0; i < loadedPlaces - 1; i++) {
+        for (int i = 0; i < loadedPlaces; i++) {
             searchComparisons++;
             if (placeArray[i].placeName.compareTo(place) == 0)
                 return placeArray[i];

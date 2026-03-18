@@ -1,0 +1,11 @@
+05266b4 made user input dynamic
+d002731 Wrote ReadME and maked PlaceSearchArray dynamically increase array size upon loading
+2925466 fixed bug where BST's for experiment would load with fewer than required elements
+fdbb746 made PlaceExperiment run with all three types of BST's
+de4fec1 Created PlaceExperiment and made it run with the array
+2f69697 created copy constructors and a sort method for PlaceNameArray
+a4e1209 Added searching through the BST
+dac6933 added the ability to load data into a BST
+cdeebc1 Gave the user the ability to Search the array for a name of a place
+1b889c8 Created SAPlaceName Array class that puts Places in Array of SA Places provided a file path
+4ad6c25 Initial project files, and added vars and constructors to Array and Entry

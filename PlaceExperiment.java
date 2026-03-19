@@ -115,7 +115,7 @@ public class PlaceExperiment {
         PlaceNameArray places = new PlaceNameArray(N);
         places.loadRecords(N, data);
         
-        PlaceNameBST tree = new PlaceNameBST(N ,places);
+        PlaceNameBST tree = new PlaceNameBST(N, places);
 
         for (int i = 0; i < 50; i++) {
             tree.findPlace(search[i]);

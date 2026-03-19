@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class PlaceSearchArray {
     public static void main(String[] args) {
         
-        PlaceNameArray data = new PlaceNameArray(1);
+        PlaceNameArray data = new PlaceNameArray(0);
 
         Scanner in = new Scanner(System.in);
         
@@ -23,7 +23,8 @@ public class PlaceSearchArray {
                 
                 System.out.print("Please enter how many places to load: ");
                 int numPlaces = in.nextInt();
-
+                
+                data = new PlaceNameArray(0);
                 data.loadRecords(numPlaces, filePath);
 
                 System.out.println(numPlaces + " places loaded.");

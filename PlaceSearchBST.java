@@ -24,6 +24,7 @@ public class PlaceSearchBST {
                 System.out.print("Please enter how many places to load: ");
                 int numPlaces = in.nextInt();
 
+                data = new PlaceNameBST();
                 data.loadRecords(numPlaces, filePath);
 
                 System.out.println(numPlaces + " places loaded.");

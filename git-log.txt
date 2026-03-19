@@ -1,3 +1,4 @@
+b24c480 gave user the ability to print loaded data
 2d75db8 made modifications to ReadME
 066a384 made PlaceSearchBST and PlaceSearchArray not load data dynamically to comply with assignment requirements
 3b04d29 made PLaceNameENtry OOP compliant

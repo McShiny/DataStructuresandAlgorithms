@@ -109,68 +109,34 @@ public class PlaceNameBST {
     }
 
     /**
-     * Searches for a place by name and returns its string representation.
-     *
-     * @param placeName the name of the place to search for
-     * @return the string representation of the matching place, or
-     *         "Place not found in database" if no match is found
-     */
-    public String findPlace(String placeName) {
-        searchComparisons = 0;
-        if (root == null) {
-            searchComparisons++;
-            return "Place not found in database";
-        }
-        return findPlace(placeName, root);
-    }
-
-    private String findPlace(String placeName, Node node) {
-        int comparison = placeName.compareTo(node.data.getPlaceName());
-        searchComparisons++;
-        if (comparison == 0)
-            return node.data.toString();
-        else if (comparison < 0) {
-                if (node.left != null)
-                    return findPlace(placeName, node.left);
-                else
-                    return "Place not found in database";
-        } else {
-                if (node.right != null)
-                    return findPlace(placeName, node.right);
-                else
-                    return "Place not found in database";
-        }
-    }
-
-    /**
      * Searches for a place by name and returns the matching PlaceNameEntry object.
      *
      * @param placeName the name of the place to search for
      * @param p an unused parameter used to distinguish this overloaded method
      * @return the matching PlaceNameEntry if found, otherwise null
      */
-    public PlaceNameEntry findPlace(String placeName, String p) {
+    public PlaceNameEntry findPlace(String placeName) {
         searchComparisons = 0;
         if (root == null) {
             searchComparisons++;
             return null;
         }
-        return findPlace(placeName, root, p);
+        return findPlace(placeName, root);
     }
 
-    private PlaceNameEntry findPlace(String placeName, Node node, String p) {
+    private PlaceNameEntry findPlace(String placeName, Node node) {
         int comparison = placeName.compareTo(node.data.getPlaceName());
         searchComparisons++;
         if (comparison == 0)
             return node.data;
         else if (comparison < 0) {
                 if (node.left != null)
-                    return findPlace(placeName, node.left, p);
+                    return findPlace(placeName, node.left);
                 else
                     return null;
         } else {
                 if (node.right != null)
-                    return findPlace(placeName, node.right, p);
+                    return findPlace(placeName, node.right);
                 else
                     return null;
         }

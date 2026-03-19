@@ -166,7 +166,7 @@ public class PlaceExperiment {
         int index = 0;
 
         while (optimalPlaces.getLoadedPlaces() < N && index < 12499) {
-            PlaceNameEntry place = places.findPlace(order[index], "PlaceNameEntry");
+            PlaceNameEntry place = places.findPlace(order[index]);
             if (place != null) {
                 optimalPlaces.loadRecord(place);
             }

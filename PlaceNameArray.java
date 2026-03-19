@@ -145,41 +145,20 @@ public class PlaceNameArray {
     }
     
     /**
-     * Searches for a place by name and returns its string representation.
-     *
-     * @param place the name of the place to search for
-     * @return the string representation of the matching place, or
-     *         "Place not found in database" if no match is found
-     */
-    public String findPlace(String place) {
-        searchComparisons = 0;
-        for (int i = 0; i < loadedPlaces; i++) {
-            searchComparisons++;
-            if (placeArray[i].getPlaceName().compareTo(place) == 0)
-                return placeArray[i].toString();
-        }   
-
-        return "Place not found in database";
-
-    }
-    
-    /**
      * Searches for a place by name and returns the matching PlaceNameEntry object.
      *
      * @param place the name of the place to search for
      * @param r an unused parameter used to distinguish this overloaded method
      * @return the matching PlaceNameEntry if found, otherwise null
      */
-    public PlaceNameEntry findPlace(String place, String r) {
+    public PlaceNameEntry findPlace(String place) {
         searchComparisons = 0;
         for (int i = 0; i < loadedPlaces; i++) {
             searchComparisons++;
             if (placeArray[i].getPlaceName().compareTo(place) == 0)
                 return placeArray[i];
         }   
-
         return null;
-
     }
     
     /**

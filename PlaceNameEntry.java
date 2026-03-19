@@ -70,28 +70,7 @@ public class PlaceNameEntry {
     public String getPlaceName() {
         return placeName;
     }
-    
-    /**
-     * Compares this place entry to another object for equality.
-     * Two PlaceNameEntry objects are considered equal if their place names match.
-     *
-     * @param object the object to compare with this entry
-     * @return true if the given object is a PlaceNameEntry with the same place name,
-     *         otherwise false
-     */
-    @Override
-    public boolean equals(Object object) {
-        
-        if (object == null || getClass() != object.getClass()) {
-            return false;
-        }
-
-        PlaceNameEntry other = (PlaceNameEntry) object;
-
-        return this.placeName.compareTo(other.placeName) == 0;
-
-    }
-   
+  
     /**
      * Returns a string representation of this place entry.
      * The returned string contains the ID, place name, municipality,

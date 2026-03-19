@@ -36,7 +36,11 @@ public class PlaceSearchArray {
                 String placeName = in.nextLine();
 
                 System.out.println("---Searching for: " + placeName + "---");
-                System.out.println(data.findPlace(placeName));
+                PlaceNameEntry found = data.findPlace(placeName);
+                if (found != null)
+                    System.out.println(data.findPlace(placeName).toString());
+                else
+                    System.out.println("Place not found in database");
                 System.out.println("Number of Comparisons: " + data.getSearchComparisons());
             }
 

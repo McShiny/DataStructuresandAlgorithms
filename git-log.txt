@@ -1,3 +1,6 @@
+b94d29d improved visual of table in PlaceExperiment
+a48956c fixed bug causing incorrect in the BST
+480ac35 fixed bug in search algorithm
 05266b4 made user input dynamic
 d002731 Wrote ReadME and maked PlaceSearchArray dynamically increase array size upon loading
 2925466 fixed bug where BST's for experiment would load with fewer than required elements

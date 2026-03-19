@@ -2,6 +2,12 @@ import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 
+/**
+ * Runs an experiment that compares average search comparisons for place-name
+ * lookups using an array, a binary search tree built in file order, a binary
+ * search tree built from sorted data, and a binary search tree built from an
+ * optimal insertion order.
+ */
 public class PlaceExperiment {
     public static void main(String[] args) {
         
@@ -17,9 +23,9 @@ public class PlaceExperiment {
             int index = 0;
 
             while ((line = reader.readLine()) != null) {
-                String[] temp = line.split("\s");
+                String[] temp = line.split(",");
                 for (int i = 0; i < 5; i++) {
-                    toSearch[index] = line.split("\s")[i];
+                    toSearch[index] = line.split(",")[i];
                     index++;
                 }
             }
@@ -71,6 +77,15 @@ public class PlaceExperiment {
         }
    }
 
+    /**
+     * Measures the average number of comparisons required to search for the
+     * provided place names in an array-backed data structure.
+     *
+     * @param N the number of place records to load
+     * @param search the place names to search for
+     * @param data the path to the input data file
+     * @return the average number of search comparisons across 50 searches
+     */
     static double testArray(int N, String[] search, String data) {
         int total = 0;
         PlaceNameArray arr = new PlaceNameArray(N);
@@ -84,6 +99,16 @@ public class PlaceExperiment {
         return total / 50.0;
     }
 
+    /**
+     * Measures the average number of comparisons required to search for the
+     * provided place names in a binary search tree built from records loaded in
+     * their original order.
+     *
+     * @param N the number of place records to load
+     * @param search the place names to search for
+     * @param data the path to the input data file
+     * @return the average number of search comparisons across 50 searches
+     */
     static double testBST(int N, String[] search, String data) {
         int total = 0;
         
@@ -98,7 +123,17 @@ public class PlaceExperiment {
         }
         return total / 50.0;
     }
-
+    
+    /**
+     * Measures the average number of comparisons required to search for the
+     * provided place names in a binary search tree built from pre-sorted place
+     * data.
+     *
+     * @param N the number of place records to include in the tree
+     * @param search the place names to search for
+     * @param data the sorted place data used to build the tree
+     * @return the average number of search comparisons across 50 searches
+     */
     static double testSortedBST(int N, String[] search, PlaceNameArray data) {
         int total = 0;
         
@@ -110,7 +145,17 @@ public class PlaceExperiment {
         }
         return total / 50.0;
     }
-
+    
+    /**
+     * Measures the average number of comparisons required to search for the
+     * provided place names in a binary search tree built from pre-sorted place
+     * data.
+     *
+     * @param N the number of place records to include in the tree
+     * @param search the place names to search for
+     * @param data the sorted place data used to build the tree
+     * @return the average number of search comparisons across 50 searches
+     */
     static double testOptimalBST(int N, String[] search, String data, String[] order) {
         int total = 0;
         

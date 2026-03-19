@@ -81,14 +81,14 @@ public class PlaceNameBST {
     }
 
     private void insertNode(PlaceNameEntry place, Node node) {
-        if (place.placeName.compareTo(node.data.placeName) < 0) {
+        if (place.getPlaceName().compareTo(node.data.getPlaceName()) < 0) {
             if (node.left == null) {
                 node.left = new Node(place);
                 size++;
             }
             else
                 insertNode(place, node.left);
-        } else if (place.placeName.compareTo(node.data.placeName) > 0) {
+        } else if (place.getPlaceName().compareTo(node.data.getPlaceName()) > 0) {
             if (node.right == null) {
                 node.right = new Node(place);
                 size++;
@@ -125,7 +125,7 @@ public class PlaceNameBST {
     }
 
     private String findPlace(String placeName, Node node) {
-        int comparison = placeName.compareTo(node.data.placeName);
+        int comparison = placeName.compareTo(node.data.getPlaceName());
         searchComparisons++;
         if (comparison == 0)
             return node.data.toString();
@@ -159,7 +159,7 @@ public class PlaceNameBST {
     }
 
     private PlaceNameEntry findPlace(String placeName, Node node, String p) {
-        int comparison = placeName.compareTo(node.data.placeName);
+        int comparison = placeName.compareTo(node.data.getPlaceName());
         searchComparisons++;
         if (comparison == 0)
             return node.data;

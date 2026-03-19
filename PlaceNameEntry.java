@@ -6,11 +6,11 @@
  */
 public class PlaceNameEntry {
     
-    public int id;
-    public String placeName;
-    public String municipality;
-    public String province;
-    public int population;
+    private int id;
+    private String placeName;
+    private String municipality;
+    private String province;
+    private int population;
     
     /**
      * Constructs a PlaceNameEntry object from individual string values.
@@ -60,6 +60,10 @@ public class PlaceNameEntry {
         this.municipality = place.municipality;
         this.province = place.province;
         this.population = place.population;
+    }
+
+    public String getPlaceName() {
+        return placeName;
     }
     
     /**

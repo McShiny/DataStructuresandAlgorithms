@@ -1,5 +1,9 @@
 import java.util.Scanner;
 
+/**
+ * Provides a command-line interface for loading place records into a binary
+ * search tree and searching for place information by name.
+ */
 public class PlaceSearchBST {
     public static void main(String[] args) {
         

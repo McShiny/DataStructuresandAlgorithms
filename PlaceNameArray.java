@@ -124,7 +124,7 @@ public class PlaceNameArray {
     
     private boolean isInArray(PlaceNameEntry place) {
         for (int i = 0; i < placeArray.length; i++) {
-            if ((placeArray[i] != null) && (placeArray[i].placeName.compareTo(place.placeName) == 0)) {
+            if ((placeArray[i] != null) && (placeArray[i].getPlaceName().compareTo(place.getPlaceName()) == 0)) {
                 return true;
             }
         }
@@ -155,7 +155,7 @@ public class PlaceNameArray {
         searchComparisons = 0;
         for (int i = 0; i < loadedPlaces; i++) {
             searchComparisons++;
-            if (placeArray[i].placeName.compareTo(place) == 0)
+            if (placeArray[i].getPlaceName().compareTo(place) == 0)
                 return placeArray[i].toString();
         }   
 
@@ -174,7 +174,7 @@ public class PlaceNameArray {
         searchComparisons = 0;
         for (int i = 0; i < loadedPlaces; i++) {
             searchComparisons++;
-            if (placeArray[i].placeName.compareTo(place) == 0)
+            if (placeArray[i].getPlaceName().compareTo(place) == 0)
                 return placeArray[i];
         }   
 
@@ -217,7 +217,7 @@ public class PlaceNameArray {
      */
     public PlaceNameArray sortByName(PlaceNameArray places) {
         PlaceNameArray sortedPlaces = new PlaceNameArray(places);
-        Arrays.sort(sortedPlaces.getPlaceArray(), Comparator.comparing(p -> p.placeName));
+        Arrays.sort(sortedPlaces.getPlaceArray(), Comparator.comparing(p -> p.getPlaceName()));
 
         return sortedPlaces;
     }

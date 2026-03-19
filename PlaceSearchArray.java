@@ -1,5 +1,9 @@
 import java.util.Scanner;
 
+/**
+ * Provides a command-line interface for loading place records into an array and
+ * searching for place information by name.
+ */
 public class PlaceSearchArray {
     public static void main(String[] args) {
         

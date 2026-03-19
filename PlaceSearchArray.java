@@ -40,7 +40,7 @@ public class PlaceSearchArray {
             }
 
             if (userAction.compareTo("H") == 0 || userAction.compareTo("h") == 0 || userAction.compareTo("help") == 0 || userAction.compareTo("Help") == 0) {
-                System.out.println("- PlaceSearchArray:\nProgram allows the user to dynamically load Place data into an array\nand then lets the user to search the array for additional information about a place after providing the name");
+                System.out.println("- PlaceSearchArray:\nProgram allows the user to load Place data into an array\nand then lets the user to search the array for additional information about a place after providing the name");
             }
             
             System.out.println("What would you like to do? (L)oad (S)earch (H)elp (Q)uit");

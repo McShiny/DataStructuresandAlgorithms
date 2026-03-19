@@ -61,7 +61,12 @@ public class PlaceNameEntry {
         this.province = place.province;
         this.population = place.population;
     }
-
+    
+    /**
+     * Returns the name of the place.
+     *
+     * @return the place name
+     */
     public String getPlaceName() {
         return placeName;
     }
@@ -86,7 +91,14 @@ public class PlaceNameEntry {
         return this.placeName.compareTo(other.placeName) == 0;
 
     }
-    
+   
+    /**
+     * Returns a string representation of this place entry.
+     * The returned string contains the ID, place name, municipality,
+     * province, and population separated by spaces.
+     *
+     * @return a string representation of this place entry
+     */
     @Override
     public String toString() {
         return id + " " + placeName + " " + municipality + " " + province + " " + population;

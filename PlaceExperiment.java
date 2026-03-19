@@ -12,9 +12,9 @@ public class PlaceExperiment {
     public static void main(String[] args) {
         
         int[] test = {1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000};
-        String filePathData = "files/SAplaceNames.csv";
-        String filePathOptimal = "files/SAPlaceNamesOptimal.txt";
-        String filePathSearches = "files/SearchQueries.txt";
+        String filePathData = "SAplaceNames.csv";
+        String filePathOptimal = "SAPlaceNamesOptimal.txt";
+        String filePathSearches = "SearchQueries.txt";
         String[] toSearch = new String[50];
         String[] optimalOrder = new String[12499];
 

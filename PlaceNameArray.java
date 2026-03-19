@@ -123,7 +123,7 @@ public class PlaceNameArray {
     } 
     
     private boolean isInArray(PlaceNameEntry place) {
-        for (int i = 0; i < placeArray.length; i++) {
+        for (int i = 0; i < loadedPlaces; i++) {
             if ((placeArray[i] != null) && (placeArray[i].getPlaceName().compareTo(place.getPlaceName()) == 0)) {
                 return true;
             }

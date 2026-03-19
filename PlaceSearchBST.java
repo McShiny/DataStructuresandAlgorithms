@@ -2,7 +2,8 @@ import java.util.Scanner;
 
 /**
  * Provides a command-line interface for loading place records into a binary
- * search tree and searching for place information by name.
+ * search tree and searching for place information by name
+ * printing loaded records.
  */
 public class PlaceSearchBST {
     public static void main(String[] args) {
@@ -11,7 +12,7 @@ public class PlaceSearchBST {
 
         Scanner in = new Scanner(System.in);
         
-        System.out.println("What would you like to do? (L)oad (S)earch (H)elp (Q)uit");
+        System.out.println("What would you like to do? (L)oad (S)earch (P)rint (H)elp (Q)uit");
         String userAction = in.next();
         in.nextLine();
         
@@ -42,8 +43,13 @@ public class PlaceSearchBST {
             if (userAction.compareTo("H") == 0 || userAction.compareTo("h") == 0 || userAction.compareTo("help") == 0 || userAction.compareTo("Help") == 0) {
                 System.out.println("- PlacesSearchBST\n Program allows the user to load Place data into a binary search tree\nand then lets the user to search for additional information about a place after providing the name");
             }
+
+            if (userAction.compareTo("P") == 0 || userAction.compareTo("p") == 0 || userAction.compareTo("Print") == 0 || userAction.compareTo("print") == 0) {
+                System.out.println("---Loaded Places---");
+                System.out.println(data);
+            }
             
-            System.out.println("What would you like to do? (L)oad (S)earch (H)elp (Q)uit");
+            System.out.println("What would you like to do? (L)oad (S)earch (P)rint (H)elp (Q)uit");
             userAction = in.next();
             in.nextLine();
         }

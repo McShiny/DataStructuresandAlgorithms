@@ -38,7 +38,7 @@ public class PlaceSearchBST {
                 System.out.println("---Searching for: " + placeName + "---");
                 PlaceNameEntry found = data.findPlace(placeName);
                 if (found != null)
-                    System.out.println(data.findPlace(placeName).toString());
+                    System.out.println(found.toString());
                 else
                     System.out.println("Place not found in database");
                 System.out.println("Number of Comparisons: " + data.getSearchComparisons());

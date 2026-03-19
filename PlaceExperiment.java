@@ -25,7 +25,7 @@ public class PlaceExperiment {
             while ((line = reader.readLine()) != null) {
                 String[] temp = line.split(",");
                 for (int i = 0; i < 5; i++) {
-                    toSearch[index] = line.split(",")[i];
+                    toSearch[index] = temp[i];
                     index++;
                 }
             }

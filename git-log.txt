@@ -1,3 +1,4 @@
+fed1d9b final bug fixes in PlaceNameArray and PlacNameBST as well as removed some redundant code
 b24c480 gave user the ability to print loaded data
 2d75db8 made modifications to ReadME
 066a384 made PlaceSearchBST and PlaceSearchArray not load data dynamically to comply with assignment requirements
